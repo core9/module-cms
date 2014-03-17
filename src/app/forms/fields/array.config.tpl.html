@@ -1,0 +1,14 @@
+<div ng-controller="coreArrayConfigController">
+	<fieldset>
+		<legend>Array configuration</legend>
+		<div>
+			<label>Type</label>
+			<select ng-options="type as type for type in fieldtypes" ng-model="field.items.type" />
+		</div>
+		<div>
+			<label>Widget</label>
+			<select ng-options="widgetname as widgetname for (widgetname, widget) in itemsfield.widgets" ng-model="data.items.widget"/>
+			<div cn-field-config field="field.items" data="data.items" />
+		</div>
+	</fieldset>
+</div>

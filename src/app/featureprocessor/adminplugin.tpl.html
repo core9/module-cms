@@ -1,0 +1,31 @@
+<div ng-controller="FeatureProcessorAdminPluginCtrl">
+	<div class="input-group col-md-12">
+		<button class="btn btn-success" style="width: 100%" ng-click="showForm = !showForm">Add plugin</button>
+	</div>
+	<div ng-if="showForm">
+		<div class="form-group">
+			<div class="input-group">
+				<label class="col-md-12 control-label">ngModule</label>  
+				<div class="col-md-12">
+					<input ng-model="module" type="text" placeholder="e.g. core9Dashboard.files" class="form-control input-md">
+					<span class="help-block">Your angular module name</span>  
+				</div>
+			</div>
+			<div class="input-group">
+	  			<label class="col-md-12 control-label">jsPath</label>  
+	  			<div class="col-md-12">
+	  				<input ng-model="file" type="text" placeholder="e.g. /static/dashboard/plugins/plugin-files.js" class="form-control input-md">
+	  				<span class="help-block">Your js code path</span>  
+	  			</div>
+			</div>
+		</div>
+		<div class="alert alert-warning">Note: you must add your js files manually (via the files feature type).</div>
+		<button class="btn btn-success" ng-click="add(module, file)">Add</button>
+	</div>
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="adminplugin in $parent.selected">
+			<span class="badge" ng-click="remove($index)"><i class='fa fa-trash-o'></i></span>
+			{{adminplugin.module}}
+		</li>
+	</ul>
+</div>

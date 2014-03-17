@@ -1,0 +1,83 @@
+/**
+ * This is the main application stylesheet. It should include or import all
+ * stylesheets used throughout the application as this is the only stylesheet in
+ * the Grunt configuration that is automatically processed.
+ */
+
+
+/**
+ * First, we include the Twitter Bootstrap LESS files.
+ */
+
+@import '../../vendor/bootstrap/less/bootstrap.less';
+
+.yamm {
+
+  // reset positions 
+  .nav, .collapse, .dropup, .dropdown {
+    position: static;
+  }  
+
+  // propagate menu position under container for fw navbars
+  .container {
+    position: relative;
+  }
+
+  // by default aligns menu to left
+  .dropdown-menu {
+    left: auto;
+  }
+  // ensure a good position
+  .nav.navbar-right .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+  
+  // Content with padding 
+  .yamm-content {
+    padding: 20px 30px;
+  }
+
+  // Fullwidth menu
+  .dropdown.yamm-fw .dropdown-menu {
+    left: 0; right: 0;
+  }
+}
+
+.bg-success {
+	background-color: #dff0d8 !important;
+}
+
+.core9 {
+
+  body {
+    position: relative;
+    padding-top: 50px;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .CodeMirror-fullscreen {
+    top: 50px;
+  }
+
+  .close-fullscreen {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 1030;
+    margin-right: 20px;
+  }
+  
+  .input-group {
+  	.dropdown-menu.selectbox {
+  	  width: 100%;
+  	}
+  }
+  
+  td.form-control {
+  	display: table-cell;
+  }
+}

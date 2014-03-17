@@ -1,0 +1,47 @@
+<div class="page-header">
+	<h1>Content references<small><i class="icon-double-angle-right"></i> manage your relations</small></h1>
+</div>
+<fieldset>
+  <legend>Options</legend>
+  <div class="row">
+  	<div class="col-lg-6">
+		  <div class="input-group">
+				<span class="input-group-addon">Source</span>
+				<button type="button" class="form-control btn btn-default dropdown-toggle">{{source.name}}</button>
+				<ul class="dropdown-menu selectbox">
+					<li ng-repeat="contenttype in contenttypes"><a ng-click="$parent.source = contenttype">{{contenttype.name}}</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-lg-6">
+		  <div class="input-group" ng-show="source !== undefined">
+				<span class="input-group-addon">Field</span>
+				<button type="button" class="form-control btn btn-default dropdown-toggle">{{sourceField.name}}</button>
+				<ul class="dropdown-menu selectbox">
+					<li ng-repeat="field in contentRefFields"><a ng-click="$parent.sourceField = {name: field.name, field: field.field}">{{field.name}}</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row" ng-show="sourceField !== undefined">
+		<div class="col-lg-6">
+			<div class="input-group">
+  			<span class="input-group-addon"><i class="fa fa-search"></i></span>
+  			<input type="text" class="form-control" placeholder="Search" ng-model="srcSearch.title">
+  			<span class="input-group-addon" ng-click="unreferenced = !unreferenced"><i class="fa" ng-class="{'fa-chain-broken': unreferenced, 'fa-link': !unreferenced}" title="Show unreferenced only"></i></span>
+			</div>
+			<div class="list-group">
+				<a ng-repeat="content in contentList | filter:srcSearch" class="list-group-item" ng-class="{active: $parent.srcIndex[content._id] === true}" ng-click="selectSource(content)">{{content.title}}</a>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="input-group">
+  			<span class="input-group-addon"><i class="fa fa-search"></i></span>
+  			<input type="text" class="form-control" placeholder="Search" ng-model="dstSearch[sourceField.field.contentfield]">
+			</div>
+			<div class="list-group">
+				<a ng-repeat="reference in referencedList | filter:dstSearch" class="list-group-item" ng-class="{active: $parent.destIndex[reference._id] === true}" ng-click="selectDestination(reference)">{{reference[sourceField.field.contentfield]}}</a>
+			</div>
+		</div>
+	</div>
+</fieldset>

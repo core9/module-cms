@@ -1,0 +1,13 @@
+<div ng-controller="ContentRefConfigController">
+	<fieldset>
+		<legend>Content reference</legend>
+		<div>
+			<label>Content Type</label>
+			<select ng-options="contenttype.name as contenttype.label for contenttype in contenttypes" ng-model="data.contenttype" />
+		</div>
+		<div>
+			<label>Select field</label>
+			<select ng-options="key as key for (key, value) in contenttype.schema.properties" ng-model="data.contentfield" />
+		</div>
+	</fieldset>
+</div>

@@ -1,0 +1,5 @@
+<div class="input-group">
+  <span class="input-group-addon">{{options.label}}</span>
+ 	<span class="input-group-addon"><input type="checkbox" ng-model="data.global" /> Global</span>
+  <input type="text" ng-disabled="data.global" class="form-control" ng-model="data.value" ng-pattern="{{options.pattern}}" />
+</div>

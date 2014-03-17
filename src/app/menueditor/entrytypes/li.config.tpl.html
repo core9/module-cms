@@ -1,0 +1,24 @@
+<div class="input-group">
+	<span class="input-group-addon">Name</span>
+	<input type="text" class="form-control" ng-model="state.editItem.name" />
+</div>
+<div class="input-group">
+	<span class="input-group-addon">Link</span>
+	<input type="text" class="form-control" ng-model="state.editItem.link" />
+</div>
+<fieldset>
+	<legend>New subitem</legend>
+	<div class="input-group">
+		<div class="input-group-btn">
+			<button type="button" class="btn btn-default dropdown-toggle">{{menuEntryTypes[newItem.type].name}} <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li ng-repeat="id in menuEntryTypes[state.editItem.type].childs track by $index"><a ng-click="newItem.type = id">{{menuEntryTypes[id].name}}</a></li>
+			</ul>
+		</div>
+		<input type="text" class="form-control" placeholder="New item name" ng-model="newItem.name" />
+		<div class="input-group-btn">
+			<button class="btn btn-success" ng-click="addItem(item, newItem)">Add item</button>
+		</div>
+	</div>
+</fieldset>

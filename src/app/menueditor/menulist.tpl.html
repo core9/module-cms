@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h1>Menu management<small><i class="icon-double-angle-right"></i> edit your menus</small></h1>
+</div>
+<div>
+	<p>Edit your menus here.</p>
+<div>
+	<div>
+		<fieldset>
+			<legend>Menus</legend>
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Actions</th>
+				</tr>
+				<tr ng-repeat="menu in menus">
+					<td>{{menu.name}}</td>
+					<td>
+						<button class="btn btn-success" ng-click="edit(menu)"><i class="fa fa-pencil"></i></button>
+						<button class="btn btn-danger" ng-click="remove(menu)"><i class="fa fa-trash-o"></i></button>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder="name" ng-model="newName" /></td>
+					<td><button class="btn btn-success" ng-click="add(newName)"><i class="icon-plus"></i> New menu</button></td>
+				</tr>
+			</table>
+		</fieldset>
+	</div>
+</div>

@@ -1,0 +1,4 @@
+<div ng-controller="ContentRefController">
+	<label>{{options.label}}</label>
+	<select ng-options="key as value for (key, value) in contentList" ng-model="selected" />
+</div>

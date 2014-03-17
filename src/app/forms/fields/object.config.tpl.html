@@ -1,0 +1,37 @@
+<div ng-controller="coreObjectConfigController">
+	<fieldset>
+		<legend>Object configuration</legend>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>Order</th>
+						<th>Label</th>
+						<th>Name</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody ui-sortable ng-model="field.properties">
+					<tr ng-repeat="(fieldname, field) in field.properties">
+						<td><i class="fa fa-arrows"></i></td>
+						<td><input type="text" ng-model="data[fieldname].label" placeholder="Label" /></td>
+						<td><input type="text" ng-model="fieldname" disabled/></td>
+						<td>
+							<button class="btn btn-success" ng-click="editField(fieldname)"><i class="fa fa-pencil"></i></button>
+							<button class="btn btn-danger" ng-click="removeField(fieldname)"><i class="fa fa-trash-o"></i></button>
+						</td>
+					</tr>
+				</tbody>
+				<tfooter>
+					<tr>
+						<td></td>
+						<td><input type="text" ng-model="newLabel" placeholder="Label" /></td>
+						<td><input type="text" ng-model="newName" placeholder="name" /></td>
+						<td><button class="btn btn-success" ng-click="addField(newLabel, newName)"><i class="fa fa-plus"></i> Add</button></td>
+					</tr>
+				</tfooter>
+			</table>
+		</div>
+	</fieldset>
+	<div cn-field-options cn-data="editfieldOptions" cn-field="editfield" ng-show="editfield !== undefined" />
+</div>

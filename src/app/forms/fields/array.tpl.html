@@ -1,0 +1,8 @@
+<div ng-controller="coreArrayController">
+	<label>{{options.label}}</label>
+	<div ng-repeat="item in data track by $index">
+		<div cn-schema-generator cn-name="name" cn-schema="schema.items" cn-data="data[$index]" cn-options="options"/>
+		<button class="btn btn-danger" ng-click="data.splice($index, 1)">Remove</button>
+	</div>
+	<button class="btn btn-success" ng-click="addItem()">Add</button>
+</div>

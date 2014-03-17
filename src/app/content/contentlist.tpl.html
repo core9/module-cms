@@ -1,0 +1,36 @@
+<div class="page-header">
+	<h1>Content <small><i class="icon-double-angle-right"></i> manage your content</small></h1>
+</div>
+<div>
+	<div class="options-panel">
+		<select ng-options="type as type.label for type in contenttypes" ng-model="contenttype"></select>
+		<button class="btn btn-success" ng-click="add()"><i class="icon-plus"></i> New {{type.label}}</button>
+	</div>
+	<table class="table table-striped" ng-show="contentlist.length > 0">
+		<thead>
+			<tr>
+				<th ng-repeat="(fieldname, field) in contenttype.schema.properties" ng-show="contenttype.schemaOptions[fieldname].showInList">
+					{{contenttype.schemaOptions[fieldname].label}}
+				</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="content in contentlist">
+				<td ng-repeat="(fieldname, field) in contenttype.schema.properties" ng-show="contenttype.schemaOptions[fieldname].showInList">
+					<a ng-click="edit(content)">{{content[fieldname]}}</a>
+				</td>
+				<td>
+					<button class="btn btn-success" ng-click="edit(content)"><i class="fa fa-pencil"></i></button>
+					<button class="btn btn-danger" ng-click="remove(content)"><i class="fa fa-trash-o"></i></button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div ng-show="contenttype !== undefined && contentlist.length == 0">
+		No {{contenttype.label}} content created yet.
+	</div>
+	<div ng-show="contenttype === undefined">
+		Select a content type first
+	</div>
+</div>

@@ -1,0 +1,19 @@
+<fieldset>
+	<legend>Field {{fieldname}}</legend>
+	<div>
+		<label>Type</label>
+		<select ng-options="type as type for type in fieldtypes" ng-model="field.type" />
+	</div>
+	<div>
+		<label>Widget</label>
+		<select ng-options="widgetname as widgetname for (widgetname, widget) in fieldType.widgets" ng-model="data.widget"/>
+		<div cn-field-config field="field" data="data" />
+	</div>
+	<div>
+		<label>Show in list</label>
+		<input type="checkbox" ng-model="data.showInList" />
+	</div>
+	<div>
+		<button class="btn btn-success" ng-click="close()">Close</button>
+	</div>
+</fieldset>
