@@ -49,7 +49,7 @@ angular.module('core9Dashboard.config', [
 })
 
 .run(function(MenuService) {
-  MenuService.add('main', {title: "Config", link: "/config", weight: 100, submenu: 'config'});
+  MenuService.add('main', {title: "Config", link: "config", weight: 100});
 })
 
 ;

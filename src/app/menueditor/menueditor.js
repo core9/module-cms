@@ -16,7 +16,10 @@ angular.module('core9Dashboard.menuEditor', [
         templateUrl: 'menueditor/menulist.tpl.html'
       }
     },
-    data:{ pageTitle: 'Menu' }
+    data:{ 
+      pageTitle: 'Menu',
+      sidebar: 'config'
+    }
   })
   .state('menueditormenu',  {
     url: '/config/menueditor/:id',
@@ -26,7 +29,10 @@ angular.module('core9Dashboard.menuEditor', [
         templateUrl: 'menueditor/menu.tpl.html'
       }
     },
-    data:{ pageTitle: 'Menu' }
+    data:{ 
+      pageTitle: 'Menu',
+      sidebar: 'config'
+    }
   });
 })
 
@@ -181,6 +187,6 @@ angular.module('core9Dashboard.menuEditor', [
   .registerMenuEntryType({id: 'li', name: 'List Item', templateUrl: 'menueditor/entrytypes/li.tpl.html', configUrl: 'menueditor/entrytypes/li.config.tpl.html', childs: ['ul', 'text']})
   .registerMenuEntryType({id: 'ul', name: 'List', templateUrl: 'menueditor/entrytypes/ul.tpl.html', configUrl: 'menueditor/entrytypes/ul.config.tpl.html', childs: ['li']})
   .registerMenuEntryType({id: 'text', name: 'Text', templateUrl: 'menueditor/entrytypes/text.tpl.html', configUrl: 'menueditor/entrytypes/text.config.tpl.html', childs: []});
-  MenuService.add('config', {title: "Menu", weight: 150, link: "/config/menueditor"});
+  MenuService.add('config', {title: "Menu", weight: 150, link: "menueditor"});
 })
 ;

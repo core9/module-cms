@@ -1,4 +1,6 @@
-<div class="input-group">
-	<span class="input-group-addon">{{options.label}}</span>
-	<input type="text" class="form-control" ng-model="data" ng-pattern="{{options.pattern}}" />
+<div class="form-group row">
+  <label class="col-md-2 control-label">{{options.label}}</label>  
+  <div class="col-md-8">
+    <input ng-model="data" type="text" ng-pattern="{{options.pattern}}" class="form-control input-md" />
+  </div>
 </div>

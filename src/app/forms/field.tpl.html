@@ -1,19 +1,27 @@
 <fieldset>
-	<legend>Field {{fieldname}}</legend>
-	<div>
-		<label>Type</label>
-		<select ng-options="type as type for type in fieldtypes" ng-model="field.type" />
-	</div>
-	<div>
-		<label>Widget</label>
-		<select ng-options="widgetname as widgetname for (widgetname, widget) in fieldType.widgets" ng-model="data.widget"/>
-		<div cn-field-config field="field" data="data" />
-	</div>
-	<div>
-		<label>Show in list</label>
-		<input type="checkbox" ng-model="data.showInList" />
-	</div>
-	<div>
-		<button class="btn btn-success" ng-click="close()">Close</button>
-	</div>
+	<legend>Field {{field.fieldname}}</legend>
+  <div class="form-group row">
+    <label class="col-md-2 control-label" for="">Type</label>  
+    <div class="col-md-8">
+      <select ng-options="type as type for type in fieldtypes" ng-model="field.type" class="form-control input-md"></select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-2 control-label" for="">Widget</label>  
+    <div class="col-md-8">
+      <select ng-options="widgetname as widgetname for (widgetname, widget) in fieldType.widgets" ng-model="data.widget" class="form-control input-md"></select>
+    </div>
+  </div>
+  <div cn-field-config field="field" data="data"></div>
+  <div class="form-group row">
+    <label class="col-md-2 control-label" for="checkboxes">Show in list</label>
+    <div class="col-md-2">
+      <label class="checkbox-inline" for="showinlist">
+        <input type="checkbox" id="showinlist" ng-model="data.showInList"> Show
+      </label>
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-success" ng-click="$parent.close()">Close</button>
+  </div>
 </fieldset>

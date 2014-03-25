@@ -1,7 +1,5 @@
-<div>
-	<div class="schema-type-object schema-type-object-{{name}}" ng-controller="coreObjectController">
-		<div ng-repeat="(innername, innerproperty) in schema.properties track by $index">
-			<div cn-schema-generator cn-name="innername" cn-schema="innerproperty" cn-data="data[innername]" cn-options="options"/>
-		</div>
+<div class="schema-type-object schema-type-object-{{name}}" ng-controller="coreObjectController">
+	<div ng-repeat="(innername, innerproperty) in schema.properties track by $index">
+		<div cn-schema-generator cn-name="innername" cn-schema="innerproperty" cn-data="data[innername]" cn-options="options"/>
 	</div>
 </div>

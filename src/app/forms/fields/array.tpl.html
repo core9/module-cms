@@ -1,8 +1,25 @@
-<div ng-controller="coreArrayController">
-	<label>{{options.label}}</label>
-	<div ng-repeat="item in data track by $index">
-		<div cn-schema-generator cn-name="name" cn-schema="schema.items" cn-data="data[$index]" cn-options="options"/>
-		<button class="btn btn-danger" ng-click="data.splice($index, 1)">Remove</button>
-	</div>
-	<button class="btn btn-success" ng-click="addItem()">Add</button>
+<div class="row" ng-controller="coreArrayController">
+  <label class="col-md-2 control-label">{{options.label}}</label>
+  <div class="col-md-10">
+    <table class="table table-striped">
+      <tr>
+        <th>Item</th>
+        <th>Actions</th>
+      </tr>
+      <tr ng-repeat="item in data track by $index">
+        <td>
+          <div cn-schema-generator cn-name="name" cn-schema="schema.items" cn-data="data[$index]" cn-options="options"></div>
+        </td>
+        <td>
+          <button class="btn btn-danger" ng-click="data.splice($index, 1)">Remove</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Add new item</td>
+        <td>
+          <button class="btn btn-success" ng-click="addItem()">Add</button>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>

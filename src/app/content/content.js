@@ -23,7 +23,10 @@ angular.module('core9Dashboard.content', [
         template: '<div ui-view></div>'
       }
     },
-    data: { pageTitle: 'Content' }
+    data: {
+      pageTitle: 'Content',
+      sidebar: 'content'
+    }
   })
   .state('content.default', {
     url: '/content',
@@ -85,7 +88,12 @@ angular.module('core9Dashboard.content', [
   };
 })
 
-.run(function(MenuService) {
-  MenuService.add('main', {title: "Content", weight: 50, link: "/content", submenu: "content"});
+.run(function(MenuService, ConfigFactory) {
+  MenuService.add('main', {title: "Content", weight: 50, link: "content.default"});
+  ConfigFactory.query({configtype: 'content'}, function(data) {
+    for(var i = 0; i < data.length; i++) {  
+      MenuService.add('content', {title: data[i].label, weight: '50', link: "content.type({type: \"" + data[i]._id + "\"})"});
+    }
+  });
 })
 ;

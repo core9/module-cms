@@ -12,29 +12,32 @@ angular.module('core9Dashboard.menu', [])
   };
 })
 
-.directive('cnmenu', function(MenuService) {
+.directive('coreMenu', function(MenuService) {
   return {
+    replace: true,
     restrict: 'A',
     templateUrl: 'menu/menu.tpl.html',
     scope: {
-      // cnmenu: '='
+      menu: '=coreMenu'
     },
     link: function(scope, elem, attrs) {
-      scope.menu = MenuService.menu[attrs.cnmenu];
+      scope.$watch('menu', function() {
+        scope.thismenu = MenuService.menu[scope.menu];
+      });
     }
   };
 })
 
-.directive('cnmenuitem', function($compile) {
+.directive('coreMenuItem', function($compile) {
   return {
     restrict: 'A',
     scope: {
-      item: '=cnmenuitem'
+      item: '=coreMenuItem'
     },
     link: function(scope, element, attrs) {
-      var template = '<a href="#{{item.link}}">{{item.title}}</a>';
-      if(scope.item.submenu !== undefined) {
-        template += '<div cnmenu="' + scope.item.submenu + '"></div>';
+      var template = scope.item.template;
+      if(template === undefined) {
+         template = '<a ui-sref="{{item.link}}">{{item.title}}</a>';
       }
       var newElement = angular.element(template);
       $compile(newElement)(scope);

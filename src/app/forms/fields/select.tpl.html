@@ -1,8 +1,11 @@
 <div class="input-group" ng-controller="coreSelectController">
-  <span class="input-group-addon">{{options.label}}</span>
-  <button type="button" class="btn btn-default form-control dropdown-toggle">{{options.values[data]}}<span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu selectbox">
-    <li ng-repeat="(id, name) in options.values track by $index"><a ng-click="switch(id)">{{name}} (ID: {{id}})</a></li>
-  </ul>
+  <div class="form-group row">
+    <label class="col-md-2 control-label" for="">{{options.label}}</label>
+    <div class="col-md-10">
+      <button type="button" class="form-control btn btn-default dropdown-toggle">{{options.values[data]}}<span class="caret"></button>
+      <ul class="dropdown-menu selectbox">
+        <li ng-repeat="(id, name) in options.values track by $index"><a ng-click="switch(id)">{{name}} (ID: {{id}})</a></li>
+      </ul>
+    </div>
+  </div>
 </div>

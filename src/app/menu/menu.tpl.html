@@ -1,5 +1,5 @@
-<ul class="nav nav-list">
-	<li ng-repeat="item in menu|orderBy:'weight'">
-		<div cnmenuitem="item"></a>
+<ul class="nav">
+	<li ng-repeat="item in thismenu|orderBy:'weight'">
+		<div core-menu-item="item" core-show-sub="{{showsub}}"></a>
 	</li>
 </ul>

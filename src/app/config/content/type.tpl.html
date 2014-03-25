@@ -1,18 +1,17 @@
-<div class="page-header">
-	<h1>{{contenttype.name}} content<small><i class="icon-double-angle-right"></i> manage your '{{contenttype.name}}' content type</small></h1>
-</div>
-
-<form>
-	<fieldset>
-		<legend>Configuration</legend>
-		<div>
-			<label>Label</label>
-			<input type="ẗext" placeholder="Label" ng-model="contenttype.label" />
-		</div>
+<h1 class="page-header">{{contenttype.label}} content<small><i class="icon-double-angle-right"></i> manage your '{{contenttype.name}}' content type</small></h1>
+<form class="col-md-12">
+  <fieldset>
+    <legend>Configuration</legend>
+    <div class="form-group row">
+      <label class="col-md-2 control-label" for="">Label</label>  
+      <div class="col-md-8">
+        <input ng-model="contenttype.label" type="text" placeholder="Label" class="form-control input-md" />
+      </div>
+    </div>
 	</fieldset>
 	<fieldset>
 		<legend>Fields</legend>
-		<table>
+		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>Order</th>
@@ -24,8 +23,8 @@
 			<tbody ui-sortable ng-model="contenttype.schema.properties">
 				<tr ng-repeat="(fieldname, field) in contenttype.schema.properties">
 					<td><i class="fa fa-arrows"></i></td>
-					<td><input type="text" ng-model="contenttype.schemaOptions[fieldname].label" placeholder="Label" /></td>
-					<td><input type="text" ng-model="fieldname" disabled/></td>
+					<td><input type="text" ng-model="contenttype.schemaOptions[fieldname].label" placeholder="Label" class="form-control input-md" /></td>
+					<td><input type="text" ng-model="fieldname" class="form-control input-md" disabled/></td>
 					<td>
 						<button class="btn btn-success" ng-click="editField(fieldname)"><i class="fa fa-pencil"></i></button>
 						<button class="btn btn-danger" ng-click="removeField(fieldname)"><i class="fa fa-trash-o"></i></button>
@@ -35,8 +34,8 @@
 			<tfooter>
 				<tr>
 					<td></td>
-					<td><input type="text" ng-model="newLabel" placeholder="Label" /></td>
-					<td><input type="text" ng-model="newName" placeholder="name" /></td>
+					<td><input type="text" ng-model="newLabel" placeholder="Label" class="form-control input-md" /></td>
+					<td><input type="text" ng-model="newName" placeholder="name" class="form-control input-md" /></td>
 					<td><button class="btn btn-success" ng-click="addField(newLabel, newName)"><i class="fa fa-plus"></i> Add</button></td>
 				</tr>
 			</tfooter>

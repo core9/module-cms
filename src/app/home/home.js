@@ -11,7 +11,10 @@ angular.module( 'core9Dashboard.home', [
         templateUrl: 'home/home.tpl.html'
       }
     },
-    data:{ pageTitle: 'Home' }
+    data:{ 
+      pageTitle: 'Home',
+      sidebar: 'main'
+    }
   });
 })
 

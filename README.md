@@ -1,7 +1,7 @@
 module-cms
 =======================
 
-This repository contains the source files for the Core9 CMS Features.
+This repository contains the source files for the Core9 CMS.
 Build the module by running:
 
     $ npm install

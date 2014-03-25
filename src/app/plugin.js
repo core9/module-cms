@@ -6,10 +6,18 @@ angular.module( 'core9Dashboard',  [
 .config(function($urlRouterProvider) {
 	$urlRouterProvider.otherwise( '/home' );
 })
-.controller('AppCtrl', function($scope) {
+.controller('AppCtrl', function($state, $scope) {
 	$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
 		if ( angular.isDefined( toState.data.pageTitle ) ) {
 			$scope.pageTitle = toState.data.pageTitle + ' | Core9 Admin Dashboard' ;
+		}
+		if($state.current.data.context !== undefined) {
+			$scope.context = $state.current.data.context;
+		}
+		if($state.current.data.sidebar !== undefined) {
+			$scope.sidebar = $state.current.data.sidebar;
+		} else {
+			$scope.sidebar = $state.current.name;
 		}
 	});
 	$scope.$on('$error', function(event, message) {
@@ -18,6 +26,9 @@ angular.module( 'core9Dashboard',  [
 	$scope.close = function() {
 		$scope.error = '';
 	};
+	$scope.collapseMenu = true;
+	$scope.menu = "main";
+	$scope.sidebar = "main";
 })
 .filter('getByProperty', function() {
 	return function(propertyName, propertyValue, collection) {
@@ -45,7 +56,7 @@ angular.module( 'core9Dashboard.admin.dashboard', [
 
 
 .run(function(MenuService) {
-	MenuService.add('main', {title: "Dashboard", link: '/', weight: 0});
+	MenuService.add('main', {title: "Dashboard", link: 'home', weight: 0});
 })
 
 

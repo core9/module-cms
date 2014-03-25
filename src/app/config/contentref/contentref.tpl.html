@@ -1,4 +1,7 @@
 <div ng-controller="ContentRefController">
-	<label>{{options.label}}</label>
-	<select ng-options="key as value for (key, value) in contentList" ng-model="selected" />
+  <div class="form-group row">
+    <div class="col-md-10">
+      <select ng-options="key as value for (key, value) in contentList" ng-model="selected" class="form-control input-md"></select>
+    </div>
+  </div>
 </div>

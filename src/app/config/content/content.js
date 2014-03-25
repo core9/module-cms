@@ -15,7 +15,10 @@ angular.module('core9Dashboard.config.content', [
         templateUrl: 'config/content/content.tpl.html'
       }
     },
-    data:{ pageTitle: 'Configuration' }
+    data:{ 
+      pageTitle: 'Configuration',
+      sidebar: 'config'
+    }
   })
   .state('configcontenttype', {
     url: '/config/contenttype/:id',
@@ -25,7 +28,11 @@ angular.module('core9Dashboard.config.content', [
         templateUrl: 'config/content/type.tpl.html'
       }
     },
-    data:{ pageTitle: 'Configuration' }
+    data:{ 
+      pageTitle: 'Configuration',
+      sidebar: 'config',
+      context: 'configcontenttype'
+    }
   });
 })
 
@@ -48,7 +55,7 @@ angular.module('core9Dashboard.config.content', [
   };
 })
 
-.controller('ConfigContentTypeCtrl', function($scope, ConfigFactory, $stateParams, $location, $state) {
+.controller('ConfigContentTypeCtrl', function($scope, ConfigFactory, $stateParams, $location, $state, MenuService) {
   $scope.contenttype = ConfigFactory.get({configtype: 'content', id: $stateParams.id});
   $scope.state = {};
 
@@ -75,6 +82,11 @@ angular.module('core9Dashboard.config.content', [
     $scope.editfieldOptions = $scope.contenttype.schemaOptions[fieldName];
   };
 
+  $scope.close = function() {
+    delete($scope.editfield);
+    delete($scope.editfieldOptions);
+  };
+
   $scope.save = function() {
     $scope.contenttype.$update();
     $state.go('configcontenttypelist');
@@ -88,7 +100,7 @@ angular.module('core9Dashboard.config.content', [
 })
 
 .run(function(MenuService, FieldConfig) {
-  MenuService.add('config', {title: 'Content', link: '/config/content', weight: 100});
+  MenuService.add('config', {title: 'Content', link: 'configcontenttypelist', weight: 100});
 })
 
 

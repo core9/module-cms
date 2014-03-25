@@ -14,7 +14,10 @@ angular.module('core9Dashboard.content.references', [
         templateUrl: 'content/references.tpl.html'
       }
     },
-    data:{ pageTitle: 'Content references' }
+    data:{ 
+		pageTitle: 'Content references',
+		sidebar: 'content'
+    }
   });
 })
 
@@ -172,6 +175,6 @@ angular.module('core9Dashboard.content.references', [
 })
 
 .run(function(MenuService) {
-  MenuService.add('content', {title: "References", weight: 50, link: "/content/references"});
+  MenuService.add('content', {title: "References", weight: 50, link: "contentreferences"});
 })
 ;
