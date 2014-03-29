@@ -17,13 +17,13 @@ module.exports = function(grunt) {
 			vendor: {
 				js: [
 					'src/vendor/ng-file-upload/angular-file-upload-html5-shim.min.js',
-					'src/vendor/jquery/jquery.min.js',
+					'src/vendor/jquery/dist/jquery.min.js',
 					'src/vendor/jquery-ui/ui/minified/jquery-ui.min.js',
 					'src/vendor/angular/angular.min.js',
 					'src/vendor/angular-resource/angular-resource.min.js',
 					'src/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
 					'src/vendor/angular-ui-router/release/angular-ui-router.min.js',
-					'src/vendor/angular-ui-sortable/src/sortable.js',
+					'src/vendor/angular-ui-sortable/sortable.min.js',
 					'src/vendor/ng-file-upload/angular-file-upload.min.js',
 					'src/vendor/codemirror/lib/codemirror.js',
 					'src/vendor/codemirror/mode/xml/xml.js',
@@ -44,7 +44,8 @@ module.exports = function(grunt) {
 		concat: {
 			options: {
 				// define a string to put between each file in the concatenated output
-				separator: ';'
+				//separator: ';'
+				separator: grunt.util.linefeed + ';' + grunt.util.linefeed
 			},
 			dist: {
 				// the files to concatenate
