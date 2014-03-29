@@ -25,7 +25,8 @@ angular.module('core9Dashboard.content', [
     },
     data: {
       pageTitle: 'Content',
-      sidebar: 'content'
+      sidebar: 'content',
+      context: 'contentcontext'
     }
   })
   .state('content.default', {
@@ -48,7 +49,15 @@ angular.module('core9Dashboard.content', [
 .controller('ContentCtrl', function() {})
 
 .controller('ContentListCtrl', function($scope, ConfigFactory, ContentFactory, $state, $stateParams) {
-  $scope.contenttypes = ConfigFactory.query({configtype: 'content'});
+  $scope.contenttypes = ConfigFactory.query({configtype: 'content'}, function (data) {
+    if($stateParams.type !== undefined) {
+      for(var i = 0; i < data.length; i++) {
+        if(data[i]._id === $stateParams.type) {
+          $scope.contenttype = data[i];
+        }
+      }
+    }
+  });
 	$scope.$watch('contenttype', function() {
 		if($scope.contenttype !== undefined && $scope.contenttype.name !== undefined) {
 			$scope.contentlist = ContentFactory.query({contenttype: $scope.contenttype.name});
@@ -92,7 +101,7 @@ angular.module('core9Dashboard.content', [
   MenuService.add('main', {title: "Content", weight: 50, link: "content.default"});
   ConfigFactory.query({configtype: 'content'}, function(data) {
     for(var i = 0; i < data.length; i++) {  
-      MenuService.add('content', {title: data[i].label, weight: '50', link: "content.type({type: \"" + data[i]._id + "\"})"});
+      MenuService.add('contentcontext', {title: data[i].label, weight: '50', link: "content.type({type: \"" + data[i]._id + "\"})"});
     }
   });
 })
