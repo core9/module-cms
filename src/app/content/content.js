@@ -99,6 +99,7 @@ angular.module('core9Dashboard.content', [
 
 .run(function(MenuService, ConfigFactory) {
   MenuService.add('main', {title: "Content", weight: 50, link: "content.default"});
+  MenuService.add('content', {title: "Content", weight: 0, link: "content.default"});
   ConfigFactory.query({configtype: 'content'}, function(data) {
     for(var i = 0; i < data.length; i++) {  
       MenuService.add('contentcontext', {title: data[i].label, weight: '50', link: "content.type({type: \"" + data[i]._id + "\"})"});

@@ -36,12 +36,11 @@ angular.module('core9Dashboard.menu', [])
     },
     link: function(scope, element, attrs) {
       var template = scope.item.template;
-      if(template === undefined) {
-         template = '<a ui-sref="{{item.link}}">{{item.title}}</a>';
+      if(template !== undefined) {
+        var newElement = angular.element(template);
+        $compile(newElement)(scope);
+        element.replaceWith(newElement);   
       }
-      var newElement = angular.element(template);
-      $compile(newElement)(scope);
-      element.replaceWith(newElement);
     }
   };
 })

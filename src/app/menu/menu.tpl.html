@@ -1,5 +1,5 @@
 <ul class="nav" ng-if="thismenu.length > 0">
-	<li ng-repeat="item in thismenu|orderBy:'weight'">
-		<div core-menu-item="item" core-show-sub="{{showsub}}"></a>
+	<li ng-repeat="item in thismenu|orderBy:'weight'" ui-sref-active="active">
+    <a ui-sref="{{item.link}}" core-menu-item="item">{{item.title}}</a>
 	</li>
 </ul>
