@@ -44,7 +44,8 @@ module.exports = function(grunt) {
 		concat: {
 			options: {
 				// define a string to put between each file in the concatenated output
-				separator: ';'
+				//separator: ';'
+				separator: grunt.util.linefeed + ';' + grunt.util.linefeed
 			},
 			dist: {
 				// the files to concatenate
