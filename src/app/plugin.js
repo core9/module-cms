@@ -13,7 +13,9 @@ angular.module( 'core9Dashboard',  [
 		}
 		if($state.current.data.context !== undefined) {
 			$scope.context = $state.current.data.context;
-		}
+		} else {
+      $scope.context = "";
+    }
 		if($state.current.data.sidebar !== undefined) {
 			$scope.sidebar = $state.current.data.sidebar;
 		} else {
@@ -57,6 +59,7 @@ angular.module( 'core9Dashboard.admin.dashboard', [
 
 .run(function(MenuService) {
 	MenuService.add('main', {title: "Dashboard", link: 'home', weight: 0});
+  MenuService.add('back', {title: "Back", template: "<a href=\"javascript:window.history.back()\">Back</a>", weight: 0});
 })
 
 

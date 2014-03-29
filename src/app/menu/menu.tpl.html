@@ -1,4 +1,4 @@
-<ul class="nav">
+<ul class="nav" ng-if="thismenu.length > 0">
 	<li ng-repeat="item in thismenu|orderBy:'weight'">
 		<div core-menu-item="item" core-show-sub="{{showsub}}"></a>
 	</li>
