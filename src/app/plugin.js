@@ -1,6 +1,6 @@
 angular.module( 'core9Dashboard',  [
   'ui.router',
-  'core9Dashboard.extensions',
+  'core9Dashboard.admin.dashboard',
   'core9Dashboard.adminplugin.feature'
 ])
 .config(function($urlRouterProvider) {
@@ -50,8 +50,6 @@ angular.module( 'core9Dashboard.admin.dashboard', [
   'core9Dashboard.config',
   'core9Dashboard.content',
   'core9Dashboard.menu',
-  'core9Dashboard.menuEditor',
-  'core9Dashboard.account',
   'core9.formgenerator',
   'templates-module-cms'
 ])

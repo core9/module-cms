@@ -5,27 +5,28 @@
 	<div ng-if="showForm">
 		<div class="form-group">
 			<div class="input-group">
-				<label class="col-md-12 control-label">ngModule</label>  
-				<div class="col-md-12">
-					<input ng-model="module" type="text" placeholder="e.g. core9Dashboard.files" class="form-control input-md">
-					<span class="help-block">Your angular module name</span>  
-				</div>
+	  		<label class="col-md-12 control-label">jsPath</label>  
+	  		<div class="col-md-12">
+	  			<input ng-model="file" type="text" placeholder="e.g. /static/admin/plugins/module-platform-users.js" class="form-control input-md">
+	  			<span class="help-block">Your js code path</span>  
+	  		</div>
 			</div>
-			<div class="input-group">
-	  			<label class="col-md-12 control-label">jsPath</label>  
-	  			<div class="col-md-12">
-	  				<input ng-model="file" type="text" placeholder="e.g. /static/dashboard/plugins/plugin-files.js" class="form-control input-md">
-	  				<span class="help-block">Your js code path</span>  
-	  			</div>
-			</div>
+      <div class="input-group">
+        <label class="col-md-12 control-label">Dependencies</label>  
+        <div class="col-md-12" ng-repeat="dependency in dependencies">
+          <input ng-model="file" type="text" placeholder="e.g. /static/admin/plugins/module-platform-users.js" class="form-control input-md">
+        </div>
+        <span class="help-block">Add js dependencies</span>
+        <button class="btn btn-success" ng-click="dependencies.push('')"><i class="fa fa-plus"></i>New</button>
+      </div>
 		</div>
-		<div class="alert alert-warning">Note: you must add your js files manually (via the files feature type).</div>
-		<button class="btn btn-success" ng-click="add(module, file)">Add</button>
+		<div class="alert alert-warning">Note: this only adds the js includes to the dashboard. You must add your js files manually (via the files feature type) or use an external source (cdn).</div>
+		<button class="btn btn-success" ng-click="add(file)">Add</button>
 	</div>
 	<ul class="list-group">
 		<li class="list-group-item" ng-repeat="adminplugin in $parent.selected">
 			<span class="badge" ng-click="remove($index)"><i class='fa fa-trash-o'></i></span>
-			{{adminplugin.module}}
+			{{adminplugin.file}}
 		</li>
 	</ul>
 </div>

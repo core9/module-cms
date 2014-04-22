@@ -3,8 +3,10 @@ angular.module( 'core9Dashboard.adminplugin.feature', [
 ])
 
 .controller("FeatureProcessorAdminPluginCtrl", function($scope) {
-	$scope.add = function(module, file) {
-		$scope.$parent.selected.push({module: module, file: file});
+  $scope.dependencies = [];
+
+	$scope.add = function(file) {
+		$scope.$parent.selected.push({file: file, dependencies: $scope.dependencies});
 		$scope.showForm = false;
 	};
 

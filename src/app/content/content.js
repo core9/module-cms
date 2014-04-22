@@ -3,7 +3,6 @@ angular.module('core9Dashboard.content', [
   'ngResource',
   'core9Dashboard.config.content',
   'core9Dashboard.config.contentref',
-  'core9Dashboard.content.references',
   'core9.formgenerator'
   ])
 

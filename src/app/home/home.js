@@ -18,7 +18,16 @@ angular.module( 'core9Dashboard.home', [
   });
 })
 
-.controller( 'HomeCtrl', function() {
+.controller( 'HomeCtrl', function ($scope, $http) {
+  $scope.login = function() {
+    $http.post("/system/login", {username: $scope.username, password: $scope.password})
+    .success(function(data) {
+      console.log("Logged in");
+    })
+    .error(function(error) {
+      $scope.$emit("$error", error.content);
+    });
+  };
 })
 
 ;
