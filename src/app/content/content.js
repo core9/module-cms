@@ -83,7 +83,7 @@ angular.module('core9Dashboard.content', [
   };
 })
 
-.controller('ContentItemCtrl', function($scope, $stateParams, $state, ContentFactory, ConfigFactory) {
+.controller('ContentItemCtrl', function($scope, $q, $stateParams, $state, ContentFactory, ConfigFactory) {
   $scope.contenttype = ConfigFactory.get({configtype: 'content', id: $stateParams.type}, function() {
     var item = ContentFactory.get({contenttype: $scope.contenttype.name, id: $stateParams.id}, function() {
       $scope.item = item;
@@ -91,8 +91,13 @@ angular.module('core9Dashboard.content', [
   });
   
   $scope.save = function() {
-    $scope.item.$update();
-    $state.go('content.type', {type: $stateParams.type});
+    var promises = [];
+    $scope.$broadcast("save", promises, $scope.item);
+    $q.all(promises).then(function () {
+      console.log("promises resolved");
+      $scope.item.$update();
+      $state.go('content.type', {type: $stateParams.type});
+    });
   };
 })
 

@@ -235,7 +235,9 @@ angular.module('core9.formgenerator', [])
   new FieldConfig({type: 'string'})
   .addWidget('standard', {template: "forms/fields/textfield.tpl.html", config: "forms/fields/textfield.config.tpl.html"})
   .addWidget('select', {template: "forms/fields/select.tpl.html", config: "forms/fields/textfield.config.tpl.html"})
-  .addWidget('textarea', {template: "forms/fields/textarea.tpl.html", config: "forms/fields/textarea.config.tpl.html"}).save();
+  .addWidget('textarea', {template: "forms/fields/textarea.tpl.html", config: "forms/fields/textarea.config.tpl.html"})
+  .addWidget('hidden', {template: "forms/fields/hidden.tpl.html", config: "forms/fields/hidden.config.tpl.html"})
+  .save();
   new FieldConfig({type: 'integer'})
   .addWidget('standard', {template: "forms/fields/integer.tpl.html", config: "forms/fields/integer.config.tpl.html"}).save();
   new FieldConfig({type: 'boolean'})
