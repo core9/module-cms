@@ -1,0 +1,47 @@
+<h1 class="page-header">Aliases <small>manage your redirects</small></h1>
+  <blockquote>You can edit your redirects here, they will not be saved until you click "save"</blockquote>
+  <fieldset ng-if="aliasConf !== undefined">
+    <legend>Aliases</legend>
+    <table class="table table-striped">
+      <tr>
+        <th>From</th>
+        <th>To</th>
+        <th>Actions</th>
+      </tr>
+      <tr ng-repeat="alias in aliasConf.aliases">
+        <td ng-click="edit = true">
+          <span ng-if="!edit">
+            {{alias.from}}
+          </span>
+          <input ng-if="edit" ng-model="alias.from" type="text" class="form-control input-md" />
+        </td>
+        <td ng-click="edit = true">
+          <span ng-if="!edit">
+            {{alias.to}}
+          </span>
+          <input ng-if="edit" ng-model="alias.to" type="text" class="form-control input-md" />
+        </td>
+        <td>
+          <button ng-click="edit = !edit" class="btn btn-success"><i class="fa fa-pencil"></i></button>
+          <button ng-click="aliasConf.aliases.splice($index, 1)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input ng-model="newFrom" type="text" class="form-control input-md" />
+        </td>
+        <td>
+          <input ng-model="newTo" type="text" class="form-control input-md" />
+        </td>
+        <td>
+        <button ng-click="aliasConf.aliases.push({from: newFrom, to: newTo}); newFrom = ''; newTo = ''" class="btn btn-success"><i class="fa fa-plus"></i></button>
+        </td>
+      </tr>
+    </table>
+  </fieldset>
+  <fieldset>
+    <legend>Actions</legend>
+    <button class="btn btn-success" ng-click="save()" ng-if="aliasConf !== undefined">Save</button>
+    <button class="btn btn-success" ng-click="createAliasConf()" ng-if="aliasConf === undefined">Create new configuration</button>
+  </fieldset>
+</div>

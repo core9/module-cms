@@ -50,6 +50,7 @@ angular.module( 'core9Dashboard.admin.dashboard', [
   'core9Dashboard.config',
   'core9Dashboard.content',
   'core9Dashboard.menu',
+  'core9Dashboard.aliases',
   'core9.formgenerator',
   'templates-module-cms'
 ])
